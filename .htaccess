@@ -1,0 +1,6 @@
+#localy server on nginx this is only 4 apache.
+AddDefaultCharset utf-8
+
+RewriteEngine on
+RewriteBase /
+RewriteRule ^(.*)$ index.php
