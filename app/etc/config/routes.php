@@ -1,5 +1,4 @@
 <?php
 return [
-    'todo' => 'todo\list',
-    'point' => 'todo\point\list'
+    'todo' => 'todo/list'
 ];
