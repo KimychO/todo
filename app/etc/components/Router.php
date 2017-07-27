@@ -1,4 +1,5 @@
 <?php
+namespace Components;
 
 class Router
 {
@@ -24,16 +25,22 @@ class Router
 
         foreach ($this->routes as $uriPattern => $path) {
             if (preg_match("~$uriPattern~", $uri)) {
-                $segments = explode("/", $path);
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+
+                $segments = explode("/", $internalRoute);
+
                 $controllerName = ucfirst(array_shift($segments)) . "Controller";
                 $actionName = array_shift($segments) . "Action";
                 $controllerFile = CONTROLLER . $controllerName . ".php";
+
+                $parameters = $segments;
+
                 if(is_file($controllerFile)){
                     include_once($controllerFile);
                 }
 
                 $controllerObject = new $controllerName;
-                $result = $controllerObject->$actionName();
+                $result = call_user_func_array([$controllerObject, $actionName], $parameters);
                 if($result !== null ){
                     break;
                 }
