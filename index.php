@@ -14,6 +14,6 @@ define('VIEW', ROOT . '/app/view/');
 
 require_once(ROOT . '/app/etc/components/Router.php');
 
-$router = new Router();
+$router = new \Components\Router();
 $router->run();
 

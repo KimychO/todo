@@ -5,6 +5,13 @@ use Model\Todo;
 
 class TodoController
 {
+    protected $_model;
+
+    private function __construct()
+    {
+        $this->_model = new Todo();
+    }
+
     /**
      * Action to show to-dos list
      *
@@ -12,7 +19,7 @@ class TodoController
      */
     public function listAction(){
         echo "list action";
-        Todo::getTodoList();
+        print_r($this->_model->getTodoList());
 
         return true;
     }
@@ -27,7 +34,7 @@ class TodoController
     {
         echo "view action<br/>";
         print_r($id);
-        Todo::getTodoById($id);
+        print_r($this->_model->getTodoById($id));
         return true;
     }
 }
