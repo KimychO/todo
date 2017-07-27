@@ -1,16 +1,39 @@
 server {
     listen          127.0.0.1:80;
     root            "d:/wtserver/www/todo";
-    #index           index.php
     allow           127.0.0.1;
     deny            all;
     server_name     todo.test;
+    index index.php index.html index.htm;
 
     location / {
-        try_files $uri $uri/ /index.php?$args;
+        try_files $uri $uri/ /index.php;
+    }
+
+    #location /images {
+    #    try_files $uri $uri/ =404;
+    #}
+
+    #location /scripts {
+    #    try_files $uri $uri/ =404;
+    #}
+
+    #autoindex on;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        include		nginx.fastcgi.conf;
+        include		nginx.redis.conf;
+        fastcgi_pass	php_farm;
     }
 
     location ~* (\.idea$|\.htaccess$|\.git) {
         deny all;
     }
+
+    #error_page 404 /404.html;
+    #error_page 500 502 503 504 /50x.html;
+    #location = /50x.html {
+    #    root "d:/wtserver/www";
+    #}
 }
