@@ -1,9 +1,9 @@
 server {
     listen          127.0.0.1:80;
-    root            "d:/wtserver/www/todo";
+    root            [path-to-project];
     allow           127.0.0.1;
     deny            all;
-    server_name     todo.test;
+    server_name     [server.name];
     index index.php index.html index.htm;
 
     location / {
@@ -34,6 +34,6 @@ server {
     #error_page 404 /404.html;
     #error_page 500 502 503 504 /50x.html;
     #location = /50x.html {
-    #    root "d:/wtserver/www";
+    #    root [path-to-project-errors-page];
     #}
 }
