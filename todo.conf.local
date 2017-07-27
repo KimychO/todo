@@ -1,0 +1,16 @@
+server {
+    listen          127.0.0.1:80;
+    root            "d:/wtserver/www/todo";
+    #index           index.php
+    allow           127.0.0.1;
+    deny            all;
+    server_name     todo.test;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~* (\.idea$|\.htaccess$|\.git) {
+        deny all;
+    }
+}
