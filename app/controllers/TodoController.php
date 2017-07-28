@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace Controller;
 
 use Model\Todo;
 
@@ -7,7 +7,7 @@ class TodoController
 {
     protected $_model;
 
-    private function __construct()
+    public function __construct()
     {
         $this->_model = new Todo();
     }
@@ -19,7 +19,7 @@ class TodoController
      */
     public function listAction(){
         echo "list action";
-        print_r($this->_model->getTodoList());
+        var_dump($this->_model->getTodoList());
 
         return true;
     }
@@ -33,8 +33,8 @@ class TodoController
     public function viewAction($id)
     {
         echo "view action<br/>";
-        print_r($id);
-        print_r($this->_model->getTodoById($id));
+        var_dump($id);
+        var_dump($this->_model->getTodoById($id));
         return true;
     }
 }

@@ -1,7 +1,9 @@
 <?php
 namespace Model;
 
-class Todo extends Connector
+use \Db;
+
+class Todo
 {
     protected $_table = 'todo';
 
@@ -11,7 +13,9 @@ class Todo extends Connector
      */
     public function getTodoList()
     {
-        $result = $this->_database->query("SELECT `id`, `name`, `description` FROM `$this->_table`");
+
+        /** @noinspection SqlResolve */
+        $result = Db::getDb()->query("SELECT `id`, `name`, `description` FROM `$this->_table`");
 
         return $result->fetchAll();
     }
@@ -23,7 +27,8 @@ class Todo extends Connector
      */
     public function getTodoById($id)
     {
-        $result = $this->_database->query("SELECT `id`, `name`, `description` FROM `$this->_table` WHERE `id` = '$id'");
+        /** @noinspection SqlResolve */
+        $result = Db::getDb()->query("SELECT `id`, `name`, `description` FROM `$this->_table` WHERE `id` = '$id'");
 
         return $result->fetch();
     }

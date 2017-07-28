@@ -1,6 +1,4 @@
 <?php
-namespace Components;
-
 class Router
 {
     private $routes;
@@ -31,14 +29,9 @@ class Router
 
                 $controllerName = ucfirst(array_shift($segments)) . "Controller";
                 $actionName = array_shift($segments) . "Action";
-                $controllerFile = CONTROLLER . $controllerName . ".php";
-
                 $parameters = $segments;
 
-                if(is_file($controllerFile)){
-                    include_once($controllerFile);
-                }
-
+                $controllerName = '\\Controller\\' . $controllerName;
                 $controllerObject = new $controllerName;
                 $result = call_user_func_array([$controllerObject, $actionName], $parameters);
                 if($result !== null ){
