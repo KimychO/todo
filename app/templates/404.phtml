@@ -5,17 +5,14 @@
     <title>To-dos List</title>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/css/main.css">
-    <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
 <div class="header">
     <?php include ROOT . '/app/templates/header.phtml'; ?>
 </div>
 <div class="content">
-    <?php if (isset($template)) {
-        /** @noinspection PhpIncludeInspection */
-        include ROOT . '/app/templates/' . $template . '.phtml';
-    } ?>
+    <h1>404</h1>
+    <span>there is no such page</span>
 </div>
 <div class="footer">
     <?php include ROOT . '/app/templates/footer.phtml'; ?>

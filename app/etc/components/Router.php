@@ -34,8 +34,10 @@ class Router
 
                 $controllerName = '\\Controller\\' . $controllerName;
                 $controllerObject = new $controllerName;
-                $result = call_user_func_array([$controllerObject, $actionName], $parameters);
-                if ($result !== null) {
+                if (method_exists($controllerObject, $actionName)) {
+                    call_user_func_array([$controllerObject, $actionName], $parameters);
+                } else {
+                    require_once(ROOT . '/app/templates/404.phtml');
                     break;
                 }
 
