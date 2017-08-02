@@ -1,3 +1,22 @@
 .todo {
     color: red;
 }
+
+body div.header div.logo img {
+    height: 100px;
+    width: auto;
+    float: left
+}
+
+body div.header div.navigation {
+    background: aquamarine;
+    text-align: -webkit-center;
+    height: 50px;
+    width: auto;
+    float: left
+}
+
+body div.header {
+    margin: 25px;
+    padding: 10px;
+}

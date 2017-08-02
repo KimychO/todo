@@ -12,9 +12,9 @@
     <?php include ROOT . '/app/templates/header.phtml'; ?>
 </div>
 <div class="content">
-    <?php if (isset($template)) {
+    <?php if (isset($content)) {
         /** @noinspection PhpIncludeInspection */
-        include ROOT . '/app/templates/' . $template . '.phtml';
+        include ROOT . '/app/templates/' . $content . '.phtml';
     } ?>
 </div>
 <div class="footer">

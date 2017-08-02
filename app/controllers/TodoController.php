@@ -23,7 +23,7 @@ class TodoController
     public function listAction()
     {
         $data['todoList'] = $this->_model->getTodoList();
-        $data['template'] = 'todo/list';
+        $data['content'] = 'todo/list';
         $this->_view->generate($data);
 
         return true;
@@ -38,7 +38,7 @@ class TodoController
     public function viewAction($id)
     {
         $data['todo'] = $this->_model->getTodoById($id);
-        $data['template'] = 'todo/item';
+        $data['content'] = 'todo/item';
         $this->_view->generate($data);
         return true;
     }

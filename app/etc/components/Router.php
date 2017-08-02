@@ -42,7 +42,6 @@ class Router
                 $controllerObject = new $controllerName;
                 if (!is_callable([$controllerObject, $actionName])) {
                     self::show404();
-
                     return;
                 }
                 $result = call_user_func_array([$controllerObject, $actionName], $parameters);
