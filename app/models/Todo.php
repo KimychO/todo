@@ -2,6 +2,7 @@
 namespace Model;
 
 use \Db;
+use \PDO;
 
 class Todo
 {
@@ -17,7 +18,7 @@ class Todo
         /** @noinspection SqlResolve */
         $result = Db::getDb()->query("SELECT `id`, `name`, `description` FROM `$this->_table`");
 
-        return $result->fetchAll();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -30,6 +31,6 @@ class Todo
         /** @noinspection SqlResolve */
         $result = Db::getDb()->query("SELECT `id`, `name`, `description` FROM `$this->_table` WHERE `id` = '$id'");
 
-        return $result->fetch();
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 }

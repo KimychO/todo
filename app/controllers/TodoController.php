@@ -1,15 +1,18 @@
 <?php
 namespace Controller;
 
-use Model\Todo;
+use Model\Todo as Model;
+use View\Todo as View;
 
 class TodoController
 {
     protected $_model;
+    protected $_view;
 
     public function __construct()
     {
-        $this->_model = new Todo();
+        $this->_model = new Model();
+        $this->_view = new View();
     }
 
     /**
@@ -17,9 +20,11 @@ class TodoController
      *
      * @return bool
      */
-    public function listAction(){
-        echo "list action";
-        var_dump($this->_model->getTodoList());
+    public function listAction()
+    {
+        $data['todoList'] = $this->_model->getTodoList();
+        $data['template'] = 'todo/list';
+        $this->_view->generate($data);
 
         return true;
     }
@@ -32,9 +37,9 @@ class TodoController
      */
     public function viewAction($id)
     {
-        echo "view action<br/>";
-        var_dump($id);
-        var_dump($this->_model->getTodoById($id));
+        $data['todo'] = $this->_model->getTodoById($id);
+        $data['template'] = 'todo/item';
+        $this->_view->generate($data);
         return true;
     }
 }

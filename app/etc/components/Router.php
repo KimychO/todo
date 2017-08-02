@@ -1,4 +1,5 @@
 <?php
+
 class Router
 {
     private $routes;
@@ -34,7 +35,7 @@ class Router
                 $controllerName = '\\Controller\\' . $controllerName;
                 $controllerObject = new $controllerName;
                 $result = call_user_func_array([$controllerObject, $actionName], $parameters);
-                if($result !== null ){
+                if ($result !== null) {
                     break;
                 }
 

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-dos List</title>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="/js/main.js"></script>
+</head>
+<body>
+<header id="header">
+    <?php include ROOT . '/app/templates/header.phtml'; ?>
+</header>
+<div class="content">
+    <?php if (!empty($template)) {
+        /** @noinspection PhpIncludeInspection */
+        include ROOT . '/app/templates/' . $template . '.phtml';
+    } ?>
+</div>
+<footer id="footer">
+    <?php include ROOT . '/app/templates/footer.phtml'; ?>
+</footer>
+</body>
+</html>
