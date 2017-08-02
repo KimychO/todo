@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <title>To-dos List</title>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
-<div class="header">
+<nav class="navbar navbar-fixed-top media-middle">
     <?php include ROOT . '/app/templates/header.phtml'; ?>
-</div>
-<div class="content">
+</nav>
+<div class="container">
     <?php if (isset($content)) {
         /** @noinspection PhpIncludeInspection */
         include ROOT . '/app/templates/' . $content . '.phtml';
     } ?>
 </div>
-<div class="footer">
+<footer class="footer col-sm-12">
     <?php include ROOT . '/app/templates/footer.phtml'; ?>
-</div>
+</footer>
 </body>
 </html>

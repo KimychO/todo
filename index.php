@@ -10,6 +10,7 @@ define('CONF', ROOT . '/app/etc/config/');
 
 include(ROOT . '/app/etc/components/Autoloader.php');
 
+require __DIR__ . '/vendor/autoload.php';
 $router = new Router();
 $router->run();
 
