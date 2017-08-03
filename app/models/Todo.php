@@ -33,4 +33,9 @@ class Todo
 
         return $result->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function addTodo()
+    {
+//        $result = Db::getDb()->query("INSERT INTO `$this->_table` VALUES `id` = '$id'");
+    }
 }

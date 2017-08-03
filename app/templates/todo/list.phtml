@@ -3,12 +3,16 @@
  * @var $todoList \Controller\TodoController listAction();
  */
 ?>
-<div class="container">
+<div class="page-header">
+    <h1>To-dos</h1>
+</div>
+<div class="lead">
     <?php foreach ($todoList as $todo): ?>
         <div class="todo">
-            <span class="id"><?php echo $todo['id']; ?></span>
-            <span class="title"><?php echo $todo['name']; ?></span>
-            <div class="points">
+            <div class="heading">
+                <h2><a href="/todo/<?php echo $todo['id']; ?>"><?php echo $todo['name']; ?></a></h2>
+            </div>
+            <div class="body">
                 <ul>
                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deserunt distinctio, doloremque
                         eos

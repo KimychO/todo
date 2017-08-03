@@ -42,4 +42,23 @@ class TodoController
         $this->_view->generate($data);
         return true;
     }
+
+    public function newAction()
+    {
+        $data['content'] = 'todo/edit';
+        $data['action'] = '/todo/save';
+        $this->_view->generate($data);
+
+        return true;
+    }
+
+    public function editAction()
+    {
+
+        $data['content'] = 'todo/edit';
+        $data['action'] = 'todo/save/';
+        $this->_view->generate($data);
+
+        return true;
+    }
 }
