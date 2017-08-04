@@ -3,6 +3,7 @@ namespace Controller;
 
 use Model\Todo as Model;
 use View\Todo as View;
+use Model\Validator;
 
 class TodoController
 {
@@ -11,6 +12,8 @@ class TodoController
 
     public function __construct()
     {
+        session_start();
+        $_SESSION['messages'] = [];
         $this->_model = new Model();
         $this->_view = new View();
     }
@@ -24,6 +27,7 @@ class TodoController
     {
         $data['todoList'] = $this->_model->getTodoList();
         $data['content'] = 'todo/list';
+        $data['header'] = "To-dos List";
         $this->_view->generate($data);
 
         return true;
@@ -39,7 +43,9 @@ class TodoController
     {
         $data['todo'] = $this->_model->getTodoById($id);
         $data['content'] = 'todo/item';
+        $data['header'] = "Viewing of \"{$data['todo']['name']}\"";
         $this->_view->generate($data);
+
         return true;
     }
 
@@ -47,16 +53,41 @@ class TodoController
     {
         $data['content'] = 'todo/edit';
         $data['action'] = '/todo/save';
+        $data['header'] = "Create New Todo";
         $this->_view->generate($data);
 
         return true;
     }
 
-    public function editAction()
+    public function saveAction($id = null)
     {
+        if (isset($_POST['submit'])
+            && Validator::validateText('Todo Name', $_POST['name'], 5)
+        ) {
+            $data = [
+                'name'        => $_POST['name'],
+                'description' => $_POST['description'],
+            ];
+            if ($id != null) {
+                $data['id'] = $id;
+                $this->_model->modifyTodo($data);
 
+            } else {
+                $this->_model->addTodo($data);
+            }
+
+        }
+        header("Location: /");
+        exit();
+    }
+
+
+    public function editAction($id)
+    {
+        $data['todo'] = $this->_model->getTodoById($id);
         $data['content'] = 'todo/edit';
-        $data['action'] = 'todo/save/';
+        $data['header'] = "Editing of \"{$data['todo']['name']}\"";
+        $data['action'] = 'todo/save/' . $id;
         $this->_view->generate($data);
 
         return true;

@@ -34,8 +34,27 @@ class Todo
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function addTodo()
+    public function addTodo($data)
     {
-//        $result = Db::getDb()->query("INSERT INTO `$this->_table` VALUES `id` = '$id'");
+        $sql = "INSERT INTO `$this->_table` VALUES (NULL , :name, :description)";
+
+        $result = Db::getDb()->prepare($sql);
+        $result->bindParam(':name', $data['name']);
+        $result->bindParam(':description', $data['description']);
+
+        return $result->execute();
+
+    }
+
+    public function modifyTodo($data)
+    {
+        $sql = "UPDATE `$this->_table` SET `name` = :name, `description` = :description ) WHERE `id` = :id ";
+
+        $result = Db::getDb()->prepare($sql);
+        $result->bindParam(':id', $data['id']);
+        $result->bindParam(':name', $data['name']);
+        $result->bindParam(':description', $data['description']);
+
+        return $result->execute();
     }
 }

@@ -3,30 +3,36 @@
  * @var $todo \Controller\TodoController viewAction()
  */
 ?>
-<div class="todo-item">
+<div class="lead">
     <div class="todo">
-        <span class="id"><?php echo $todo['id']; ?></span>
-        <span class="title"><?php echo $todo['name']; ?></span>
-        <span class="description"><?php echo $todo['description']; ?></span>
-        <div class="points">
+        <div class="heading">
+            <h2><a href="/todo/edit/<?php echo $todo['id']; ?>">EDIT</a></h2>
+        </div>
+        <div class="body">
             <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deserunt distinctio, doloremque eos
-                    exercitationem illum laboriosam magni minima molestiae natus odio quas recusandae sapiente sint sunt
+                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deserunt distinctio, doloremque
+                    eos
+                    exercitationem illum laboriosam magni minima molestiae natus odio quas recusandae sapiente sint
+                    sunt
                     suscipit totam veritatis vero.
                 </li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequuntur corporis dicta dolores
+                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequuntur corporis dicta
+                    dolores
                     eos exercitationem incidunt maiores minima neque nostrum, nulla numquam placeat porro quaerat
                     quibusdam, suscipit tenetur unde voluptatibus?
                 </li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum laudantium maxime molestiae quis
+                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum laudantium maxime molestiae
+                    quis
                     reiciendis saepe, tenetur? Ad, beatae est explicabo iste iusto nulla porro quaerat quas qui,
                     ratione, repellendus ut.
                 </li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo provident qui ullam veniam voluptas.
-                    Blanditiis fugit itaque molestiae nam, obcaecati quam saepe ullam vel voluptatem! Aperiam asperiores
+                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo provident qui ullam veniam
+                    voluptas.
+                    Blanditiis fugit itaque molestiae nam, obcaecati quam saepe ullam vel voluptatem! Aperiam
+                    asperiores
                     deleniti eum totam!
                 </li>
             </ul>
         </div>
-    </div>
+        </div>
 </div>

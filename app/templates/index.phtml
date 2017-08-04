@@ -12,7 +12,13 @@
 <div class="header">
     <?php include ROOT . '/app/templates/header.phtml'; ?>
 </div>
+<?php include ROOT . '/app/templates/messages.phtml'; ?>
 <div class="content">
+    <?php if (isset($header)): ?>
+        <div class="page-header">
+            <h1><?php echo $header ?></h1>
+        </div>
+    <?php endif; ?>
     <?php if (isset($content)) {
         /** @noinspection PhpIncludeInspection */
         include ROOT . '/app/templates/' . $content . '.phtml';

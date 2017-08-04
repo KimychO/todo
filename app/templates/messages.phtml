@@ -1,0 +1,9 @@
+<?php if (!empty($_SESSION['messages'])): ?>
+    <?php foreach ($_SESSION['messages'] as $message): ?>
+        <div class="<?php echo $message['type'] ?>">
+            <ul>
+                <li><?php echo $message['text'] ?></li>
+            </ul>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
