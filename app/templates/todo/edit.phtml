@@ -1,16 +1,31 @@
 <div class="edit-form">
-    <form action="<?php /** @noinspection PhpUndefinedVariableInspection */
-    echo $action ?>" method="post">
+    <form action="<?php echo $action ?>" method="post">
         <label for="name">Name Of Todo</label>
-        <input type="text" name="name" placeholder="Name goes here" value="<?php if (isset($todo)) {
-            echo $todo['name'];
-        } ?>"/>
+        <input type="text" name="name" placeholder="Name goes here" value="<?php $todo['name'] ?>"/>
 
         <label for="description">Description of Todo</label>
-        <textarea name="description" id="" cols="200" rows="10" placeholder="description"><?php if (isset($todo)) {
-                echo $todo['description'];
-            } ?></textarea>
+        <textarea name="description" id="" cols="200" rows="10"
+                  placeholder="description"><?php echo $todo['description']; ?></textarea>
 
         <input type="submit" name="submit" value="Submit">
     </form>
+    <div>
+        <h2>Points</h2>
+        <form data-bind="submit: addTask">
+            Add task: <input data-bind="value: newTaskText" placeholder="What needs to be done?"/>
+            <button type="submit">Add</button>
+        </form>
+        <button data-bind="click: save">Save</button>
+
+        <ul data-bind="foreach: tasks, visible: tasks().length > 0">
+            <li>
+                <div data-bind="text: id"></div>
+                <input data-bind="value: description"/>
+                <a href="#" data-bind="click: $parent.removeTask">Delete</a>
+            </li>
+        </ul>
+    </div>
 </div>
+<script type="text/javascript">
+    ko.applyBindings(new TaskListViewModel(<?php echo $todoId?>));
+</script>

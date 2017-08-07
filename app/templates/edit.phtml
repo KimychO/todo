@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-dos List</title>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/form.css">
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/vendor/components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/js/knockout-3.4.2.js"></script>
+    <script type="text/javascript" src="/js/edit.js"></script>
+</head>
+<body>
+<div class="header">
+    <?php include ROOT . '/app/templates/header.phtml'; ?>
+</div>
+<?php include ROOT . '/app/templates/messages.phtml'; ?>
+<div class="content">
+    <?php if (isset($header)): ?>
+        <div class="page-header">
+            <h1><?php echo $header ?></h1>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($content)) {
+        /** @noinspection PhpIncludeInspection */
+        include ROOT . '/app/templates/' . $content . '.phtml';
+    } ?>
+</div>
+<div class="footer">
+    <?php include ROOT . '/app/templates/footer.phtml'; ?>
+</div>
+
+</body>
+</html>

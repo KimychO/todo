@@ -51,6 +51,7 @@ class TodoController
 
     public function newAction()
     {
+        $data['todo'] = ['name' => "", "description" => ""];
         $data['content'] = 'todo/edit';
         $data['action'] = '/todo/save';
         $data['header'] = "Create New Todo";
@@ -88,7 +89,8 @@ class TodoController
         $data['content'] = 'todo/edit';
         $data['header'] = "Editing of \"{$data['todo']['name']}\"";
         $data['action'] = 'todo/save/' . $id;
-        $this->_view->generate($data);
+        $data['todoId'] = $id;
+        $this->_view->generate($data, 'edit');
 
         return true;
     }
