@@ -62,7 +62,7 @@ class TodoController
             }
 
         }
-        header("Location: {$_SERVER['SERVER_NAME']}");
+        header("Location: /");
         exit();
     }
 
@@ -71,7 +71,7 @@ class TodoController
         $data['todo'] = $this->_model->getTodoById($id);
         $data['content'] = 'todo/edit';
         $data['header'] = "Editing of \"{$data['todo']['name']}\"";
-        $data['action'] = 'todo/save/' . $id;
+        $data['action'] = '/todo/save/' . $id;
         $data['todoId'] = $id;
         $this->_view->generate($data, 'edit');
 
