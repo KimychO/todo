@@ -13,13 +13,18 @@
                     <a href="/todo/remove/<?php echo $todo['id']; ?>" class="remove">remove</a>
                 </div>
             </div>
-            <div class="body">
+            <?php if($todo['description']): ?>
+            <div class="description"><?php echo $todo['description'] ?></div>
+            <?php endif; ?>
+            <?php if(!empty($todo['points'])): ?>
+            <div class="points">
                 <ul>
                     <?php foreach($todo['points'] as $point): ?>
                     <li><?php echo $point; ?></li>
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <?php endif; ?>
         </div>
     <?php endforeach; ?>
 </div>

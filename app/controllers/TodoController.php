@@ -62,7 +62,7 @@ class TodoController
             }
 
         }
-        header("Location: /");
+        header("Location: {$_SERVER['SERVER_NAME']}");
         exit();
     }
 

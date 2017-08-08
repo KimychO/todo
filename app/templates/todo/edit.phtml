@@ -7,24 +7,26 @@
         <textarea name="description" id="" cols="200" rows="10"
                   placeholder="description"><?php echo $todo['description']; ?></textarea>
 
-        <input type="submit" name="submit" value="Submit">
+        <input type="submit" name="submit" value="Save Todo">
     </form>
-    <div>
-        <h2>Points</h2>
+    <?php if(isset($todoId)):?>
+    <div class="points">
+        <h2>Points</h2><button data-bind="click: save">Commit Points</button>
         <form data-bind="submit: addPoint">
-            Add Point: <input data-bind="value: newPointText" placeholder="What needs to be done?"/>
+            Add Point: <input type="text" data-bind="value: newPointText" placeholder="What needs to be done?"/>
             <button type="submit">Add</button>
         </form>
-        <button data-bind="click: save">Save</button>
+
 
         <ul data-bind="foreach: points, visible: points().length > 0">
             <li>
-                <input data-bind="value: description"/>
+                <input type="text" data-bind="value: description"/>
                 <a href="#" data-bind="click: $parent.removePoint">Delete</a>
             </li>
         </ul>
     </div>
+    <script type="text/javascript">
+        ko.applyBindings(new TaskListViewModel(<?php echo $todoId?>));
+    </script>
+    <?php endif;?>
 </div>
-<script type="text/javascript">
-    ko.applyBindings(new TaskListViewModel(<?php echo $todoId?>));
-</script>

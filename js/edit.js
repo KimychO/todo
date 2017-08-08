@@ -11,6 +11,9 @@ function TaskListViewModel(todoId) {
     self.toRemove = ko.observableArray([]);
     // Operations
 
+    console.log(todoId);
+
+
     self.getPoints = function() {
         $.getJSON("/points/get/" + todoId, function (allData) {
             var mappedPoints = $.map(allData, function (item) {

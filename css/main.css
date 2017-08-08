@@ -1,3 +1,94 @@
+div.content div.lead div.description {
+    padding:20px;
+    margin:10px;
+    background-color:bisque;
+    border-radius:20px;
+    border-style:dotted
+}
+
+div.content div.lead div.points {
+    padding:10px 40px 10px 40px;
+    margin:10px;
+    background-color:bisque;
+    border-radius:20px;
+    border-style:dotted
+}
+
+
+div.content .todo {
+    background: azure;
+    margin: 50px;
+    padding: 5px;
+    border-bottom-width: thick;
+    border-bottom-style: dashed;
+    border-bottom-color: brown;
+    box-shadow: inset 0 0 20px 1px black;
+    border-radius: 5px;
+}
+
+div.content div.lead div.heading {
+    padding:30px;
+}
+
+div.content div.lead div.heading .actions {
+    float:right;
+    margin:-25px;
+}
+div.content div.lead div.heading .actions a{
+    background-color:orange;
+    margin-right:10px;
+    padding: 5px;
+    color:black;
+    border: 1px solid #754b23;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 0 11px 3px black;
+}
+
+div.content div.lead div.heading .actions a:link{
+    text-decoration:none;
+}
+
+div.content div.lead div.heading .actions a:visited{
+    text-decoration:none;
+}
+
+
+/* General styles begin*/
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.content {
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 90px;
+}
+
+.page-header {
+    margin-left: 180px;
+    box-shadow: -4px -2px 13px 3px #d09a1f;
+    background-color: #FF9800;
+    color: #795548;
+    border-style: double;
+    width: 700px;
+}
+/*general styles end*/
+
 /* HEADER BEGIN */
 body div.header div.logo img {
     height: 100px;
@@ -57,48 +148,6 @@ body div.header {
 }
 
 /* HEADER END */
-
-body {
-    position: relative;
-    margin: 0;
-    padding-bottom: 6rem;
-    min-height: 100%;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
-div.content .todo {
-    background: azure;
-    margin: 50px;
-    padding: 5px;
-    border-bottom-width: thick;
-    border-bottom-style: dashed;
-    border-bottom-color: brown;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-.content {
-    box-sizing: border-box;
-    min-height: 100%;
-    padding-bottom: 90px;
-}
-
-.page-header {
-    margin-left: 180px;
-    box-shadow: -4px -2px 13px 3px #d09a1f;
-    background-color: #FF9800;
-    color: #795548;
-    border-style: double;
-    width: 700px;
-}
 
 /* FOOTER BEGIN*/
 .footer {
