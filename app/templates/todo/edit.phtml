@@ -1,7 +1,7 @@
 <div class="edit-form">
     <form action="<?php echo $action ?>" method="post">
         <label for="name">Name Of Todo</label>
-        <input type="text" name="name" placeholder="Name goes here" value="<?php $todo['name'] ?>"/>
+        <input type="text" name="name" placeholder="Name goes here" value="<?php echo $todo['name'] ?>"/>
 
         <label for="description">Description of Todo</label>
         <textarea name="description" id="" cols="200" rows="10"
@@ -11,17 +11,16 @@
     </form>
     <div>
         <h2>Points</h2>
-        <form data-bind="submit: addTask">
-            Add task: <input data-bind="value: newTaskText" placeholder="What needs to be done?"/>
+        <form data-bind="submit: addPoint">
+            Add Point: <input data-bind="value: newPointText" placeholder="What needs to be done?"/>
             <button type="submit">Add</button>
         </form>
         <button data-bind="click: save">Save</button>
 
-        <ul data-bind="foreach: tasks, visible: tasks().length > 0">
+        <ul data-bind="foreach: points, visible: points().length > 0">
             <li>
-                <div data-bind="text: id"></div>
                 <input data-bind="value: description"/>
-                <a href="#" data-bind="click: $parent.removeTask">Delete</a>
+                <a href="#" data-bind="click: $parent.removePoint">Delete</a>
             </li>
         </ul>
     </div>

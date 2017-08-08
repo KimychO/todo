@@ -33,22 +33,6 @@ class TodoController
         return true;
     }
 
-    /**
-     * Action to show single to-do element
-     *
-     * @param $id
-     * @return bool
-     */
-    public function viewAction($id)
-    {
-        $data['todo'] = $this->_model->getTodoById($id);
-        $data['content'] = 'todo/item';
-        $data['header'] = "Viewing of \"{$data['todo']['name']}\"";
-        $this->_view->generate($data);
-
-        return true;
-    }
-
     public function newAction()
     {
         $data['todo'] = ['name' => "", "description" => ""];
@@ -82,7 +66,6 @@ class TodoController
         exit();
     }
 
-
     public function editAction($id)
     {
         $data['todo'] = $this->_model->getTodoById($id);
@@ -93,5 +76,12 @@ class TodoController
         $this->_view->generate($data, 'edit');
 
         return true;
+    }
+
+    public function removeAction($id)
+    {
+       $this->_model->deleteTodo($id);
+        header("Location: /");
+        exit();
     }
 }

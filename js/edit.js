@@ -1,4 +1,4 @@
-function Task(data) {
+function Point(data) {
     this.description = ko.observable(data.description);
     this.id = data.id;
 }
@@ -6,31 +6,37 @@ function Task(data) {
 function TaskListViewModel(todoId) {
     // Data
     var self = this;
-    self.tasks = ko.observableArray([]);
-    self.newTaskText = ko.observable();
-
+    self.points = ko.observableArray([]);
+    self.newPointText = ko.observable();
+    self.toRemove = ko.observableArray([]);
     // Operations
-    self.addTask = function () {
-        self.tasks.push(new Task({description: this.newTaskText()}));
-        self.newTaskText("");
-    };
-    self.removeTask = function (task) {
-        self.tasks.remove(task)
+
+    self.getPoints = function() {
+        $.getJSON("/points/get/" + todoId, function (allData) {
+            var mappedPoints = $.map(allData, function (item) {
+                return new Point(item)
+            });
+            self.points(mappedPoints);
+        });
     };
 
-    $.getJSON("/points/get/" + todoId, function (allData) {
-        var mappedTasks = $.map(allData, function (item) {
-            return new Task(item)
-        });
-        self.tasks(mappedTasks);
-    });
+    self.addPoint = function () {
+        self.points.push(new Point({description: self.newPointText()}));
+        self.newPointText("");
+    };
+    self.removePoint = function (point) {
+        self.toRemove.push(point.id);
+        self.points.remove(point);
+    };
+
+    self.getPoints();
 
     self.save = function () {
-        $.ajax("/points/save/" + todoId, {
-            data: ko.toJSON({points: self.tasks}),
+        $.ajax("/points/save/", {
+            data: ko.toJSON({points: self.points, remove: self.toRemove, todoId: todoId}),
             type: "post", contentType: "application/json",
             success: function (result) {
-                alert(result)
+                self.getPoints();
             }
         });
     };

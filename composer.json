@@ -1,0 +1,8 @@
+{
+    "name": "valent/todo",
+    "type": "project",
+    "require": {
+        "components/jquery": "^3.2"
+    },
+    "minimum-stability": "dev"
+}
